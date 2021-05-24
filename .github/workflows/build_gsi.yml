@@ -13,7 +13,7 @@ jobs:
     steps:
        - name: Build
          run: |       
-           apt-get -y update && apt-get -y upgrade && apt-get -y install git
+           sudo apt-get -y update && sudo apt-get -y upgrade && sudo apt-get -y install git
            git clone --recurse-submodules https://github.com/kmou424/ErfanGSIs.git --depth=1
            cd ErfanGSIs
            git clone https://github.com/kmou424/auto_build_gsi build_scripts

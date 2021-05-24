@@ -91,9 +91,7 @@ prepare_env() {
 	echo " "
 	msg "|| Preparing Environment ||"
 	export DEBIAN_FRONTEND=noninteractive
-	TZ=Asia/Shanghai
-	ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-	bash setup.sh
+	sudo bash setup.sh
 	. build_scripts/firmware_info
 }
 
@@ -104,7 +102,7 @@ build_gsi() {
 	fi
 
 	msg "|| Started Build ||"
-	./url2GSI.sh $FIRMWARE_LINK $FIRMWARE_OS 2>&1 | tee build.log
+	sudo bash url2GSI.sh $FIRMWARE_LINK $FIRMWARE_OS 2>&1 | tee build.log
 }
 
 output_upload() {
