@@ -107,15 +107,20 @@ build_gsi() {
 	./url2GSI.sh $FIRMWARE_LINK $FIRMWARE_OS 2>&1 | tee build.log
 }
 
-gen_output() {
+output_upload() {
 	msg "|| Compressing Output Files ||"
-
-	mkdir /tmp/output
-	mv output/* /tmp/output/
-	#if [ "$PTTG" = 1 ]
- 	#then
-	#	tg_post_build "$ZIP_FINAL.zip" "好耶! 构建成功了"
-	#fi
+	cd output
+	ABNAME="$(ls *-AB-*.img)"
+	ABNAME_FINAL="${ABNAME%.*}"
+	AonlyNAME="$(ls *-Aonly-*.img)"
+	AonlyNAME_FINAL="${AonlyNAME%.*}"
+	cd ..
+	echo "$ABNAME_FINAL.7z"
+	7z a "$ABNAME_FINAL.7z" output/*-AB-*
+	tg_post_build "$ABNAME_FINAL.7z" "好耶! 构建成功了"
+	echo "$AonlyNAME_FINAL.7z"
+	7z a "$AonlyNAME_FINAL.7z" output/*-Aonly-*
+	tg_post_build "$AonlyNAME_FINAL.7z" "好耶! 构建成功了"
 }
 
 upload_log() {
@@ -125,4 +130,4 @@ upload_log() {
 prepare_env
 build_gsi
 upload_log
-gen_output
+output_upload
