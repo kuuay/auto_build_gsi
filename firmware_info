@@ -1,2 +1,4 @@
-FIRMWARE_OS=Pixel
+FIRMWARE_OS="Pixel"
+FIRMWARE_DEVICE="redfin"
+FIRMWARE_MODEL="Pixel 5"
 FIRMWARE_LINK="https://dl.google.com/developers/android/sc/images/factory/redfin-spb1.210331.013-factory-f3f9db4a.zip"
