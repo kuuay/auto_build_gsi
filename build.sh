@@ -114,10 +114,10 @@ output_upload() {
 	AonlyNAME_FINAL="${AonlyNAME%.*}"
 	cd ..
 	echo "$ABNAME_FINAL.7z"
-	7z a "$ABNAME_FINAL.7z" output/*-AB-*
+	7za a -t7z -r $ABNAME_FINAL.7z output/*-AB-*.img
 	tg_post_build "$ABNAME_FINAL.7z" "好耶! 构建成功了"
 	echo "$AonlyNAME_FINAL.7z"
-	7z a "$AonlyNAME_FINAL.7z" output/*-Aonly-*
+	7za a -t7z -r $AonlyNAME_FINAL.7z output/*-Aonly-*.img
 	tg_post_build "$AonlyNAME_FINAL.7z" "好耶! 构建成功了"
 }
 
