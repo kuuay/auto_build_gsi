@@ -90,6 +90,8 @@ tg_post_build() {
 prepare_env() {
 	echo " "
 	msg "|| Preparing Environment ||"
+	TZ=Asia/Shanghai
+	ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 	bash setup.sh
 	bash build_scripts/firmware_info
 }
