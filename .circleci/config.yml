@@ -1,0 +1,19 @@
+version: 2.1
+jobs:
+  build-gsi:
+   docker:
+      - image: ubuntu:20.04
+   steps:
+      - run:
+          command: |
+           git clone --recurse-submodules https://github.com/kmou424/ErfanGSIs.git --depth=1
+           cd ErfanGSIs
+           git clone https://github.com/kmou424/auto_build_gsi build_scripts
+           source build_scripts/build.sh
+    - store_artifacts:
+        path: /tmp/output
+workflows:
+  version: 2.1
+  cooking:
+    jobs:
+      - build-gsi
