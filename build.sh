@@ -132,4 +132,3 @@ upload_log() {
 prepare_env
 build_gsi
 output_upload
-upload_log
