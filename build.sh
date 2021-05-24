@@ -100,7 +100,7 @@ prepare_env() {
 build_gsi() {
 	if [ "$PTTG" = 1 ]
  	then
-		tg_post_msg "<b>第$KBUILD_BUILD_VERSION次任务开始了哦</b>%0A<b>操作系统 : </b><code>$DISTRO</code>%0A<b>内核-版本 : </b><code>$KERNEL_NAME</code>%0A<b>Linux 版本 : </b><code>$KERVER</code>%0A<b>日期 : </b><code>$(export TZ=UTC-8; date)</code>%0A<b>CI 服务商 : </b><code>$KBUILD_BUILD_HOST</code>%0A<b>核心数 : </b><code>$PROCS</code>%0A"
+		tg_post_msg "<b>第$KBUILD_BUILD_VERSION次任务开始了哦</b>%0A<b>操作系统 : </b><code>$DISTRO</code>%0A<b>Firmware类型 : </b><code>$FIRMWARE_OS</code>%0A<b>Firmware来源 : </b><code>$FIRMWARE_LINK</code>%0A<b>日期 : </b><code>$(export TZ=UTC-8; date)</code>%0A<b>CI 服务商 : </b><code>$KBUILD_BUILD_HOST</code>"
 	fi
 
 	msg "|| Started Build ||"
@@ -127,5 +127,5 @@ upload_log() {
 
 prepare_env
 build_gsi
-gen_output
 upload_log
+gen_output
