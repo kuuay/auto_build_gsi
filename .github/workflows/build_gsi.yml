@@ -5,6 +5,9 @@ on:
   workflow_dispatch:
   watch:
     types: [started]
+
+env:
+  token: ${{ secrets.BOT_TOKEN }}
   
 jobs:
   build:
@@ -18,5 +21,19 @@ jobs:
            cd ErfanGSIs
            git clone https://github.com/kmou424/auto_build_gsi build_scripts
            source build_scripts/build.sh
+       - name: Release
+         uses: softprops/action-gh-release@v1
+         with:
+           name: ${{ env.RELEASE_TAG }}
+           tag_name: ${{ env.RELEASE_TAG }}
+           files: |
+             ErfanGSIs/*.7z
+             ErfanGSIs/*.txt
          env:
-           token: ${{ secrets.BOT_TOKEN }}
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       - name: Upload
+         run: |
+           cd ErfanGSIs
+           source build_scripts/upload.sh
+         env:
+           RELEASE_TAG_NAME: ${{ env.RELEASE_TAG }}

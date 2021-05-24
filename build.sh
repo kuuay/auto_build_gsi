@@ -118,10 +118,11 @@ output_upload() {
 	cd ..
 	echo "$ABNAME_FINAL.7z"
 	7za a -t7z -r $ABNAME_FINAL.7z output/*-AB-*.img
-	tg_post_build "$ABNAME_FINAL.7z" "好耶! 构建成功了"
 	echo "$AonlyNAME_FINAL.7z"
 	7za a -t7z -r $AonlyNAME_FINAL.7z output/*-Aonly-*.img
-	tg_post_build "$AonlyNAME_FINAL.7z" "好耶! 构建成功了"
+
+        DATE_TAG=$(export TZ=UTC-8; date +"%Y%m%d")
+        echo "RELEASE_TAG=$FIRMWARE_OS-$FIRMWARE_DEVICE-$DATE_TAG" >> $GITHUB_ENV
 }
 
 upload_log() {
@@ -130,5 +131,5 @@ upload_log() {
 
 prepare_env
 build_gsi
-upload_log
 output_upload
+upload_log
