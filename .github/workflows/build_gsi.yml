@@ -18,3 +18,5 @@ jobs:
            cd ErfanGSIs
            git clone https://github.com/kmou424/auto_build_gsi build_scripts
            source build_scripts/build.sh
+         env:
+           token: ${{ secrets.BOT_TOKEN }}
