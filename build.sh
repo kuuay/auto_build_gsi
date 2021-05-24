@@ -90,6 +90,7 @@ tg_post_build() {
 prepare_env() {
 	echo " "
 	msg "|| Preparing Environment ||"
+	export DEBIAN_FRONTEND=noninteractive
 	TZ=Asia/Shanghai
 	ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 	bash setup.sh
