@@ -119,10 +119,7 @@ gen_output() {
 }
 
 upload_log() {
-	if [ $LOG_DEBUG = "1" ]
-	then
-		tg_post_build "build.log" "好耶! 来康康log吧" "Debug Mode Logs"
-	fi
+	tg_post_build "build.log" "好耶! 来康康log吧" "Debug Mode Logs"
 }
 
 prepare_env
