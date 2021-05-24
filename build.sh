@@ -60,6 +60,9 @@ then
 	then
 		export KBUILD_BUILD_VERSION=$CIRCLE_BUILD_NUM
 		export KBUILD_BUILD_HOST="CircleCI"
+	else
+		export KBUILD_BUILD_VERSION=$GITHUB_RUN_NUMBER
+		export KBUILD_BUILD_HOST="Github Actions"
 	fi
 fi
 
