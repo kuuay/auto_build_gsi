@@ -94,7 +94,7 @@ prepare_env() {
 	TZ=Asia/Shanghai
 	ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 	bash setup.sh
-	bash build_scripts/firmware_info
+	. build_scripts/firmware_info
 }
 
 build_gsi() {
