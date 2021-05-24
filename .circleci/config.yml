@@ -10,8 +10,8 @@ jobs:
            cd ErfanGSIs
            git clone https://github.com/kmou424/auto_build_gsi build_scripts
            source build_scripts/build.sh
-    - store_artifacts:
-        path: /tmp/output
+      - store_artifacts:
+          path: /tmp/output
 workflows:
   version: 2.1
   cooking:
