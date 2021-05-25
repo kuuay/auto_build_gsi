@@ -22,11 +22,11 @@ tg_post_msg_md() {
 }
 
 upload_notice() {
-	tg_post_msg_html "<b>第$KBUILD_BUILD_VERSION次任务开始了哦</b>%0A<b>操作系统 : </b><code>$DISTRO</code>%0A<b>CI 服务商 : </b><code>$KBUILD_BUILD_HOST</code>%0A<b>日期 : </b><code>$(export TZ=UTC-8; date)</code>%0A%0A<b>固件信息:</b>%0A<b>机型 : </b><code>$FIRMWARE_MODEL [$FIRMWARE_DEVICE]</code>%0A<b>OS : </b><code>$FIRMWARE_OS</code>%0A<b>来源 : </b><code>$FIRMWARE_LINK</code>"
+	tg_post_msg_html "<b>第$KBUILD_BUILD_VERSION次任务已完成($1)</b>%0A<b>操作系统 : </b><code>$DISTRO</code>%0A<b>CI 服务商 : </b><code>$KBUILD_BUILD_HOST</code>%0A<b>日期 : </b><code>$(export TZ=UTC-8; date)</code>%0A%0A<b>固件信息:</b>%0A<b>机型 : </b><code>$FIRMWARE_MODEL [$FIRMWARE_DEVICE]</code>%0A<b>OS : </b><code>$FIRMWARE_OS</code>%0A<b>来源 : </b><code>$FIRMWARE_LINK</code>"
 }
 upload_link() {
-        tg_post_msg_md "**GSI $RELEASE_TAG_NAME 制作完成:** [下载](https://github.com/kmou424/auto_build_gsi/releases/tag/$RELEASE_TAG_NAME)"
+        tg_post_msg_md "**GSI $RELEASE_TAG_NAME 制作完成:** [下载](https://github.com/kmou424/auto_build_gsi/releases/tag/$RELEASE_TAG_NAME-$1)"
 }
 
-upload_notice
-upload_link
+upload_notice $1
+upload_link $1

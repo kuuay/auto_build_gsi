@@ -24,8 +24,8 @@ jobs:
        - name: Release
          uses: softprops/action-gh-release@v1
          with:
-           name: ${{ env.RELEASE_TAG }}
-           tag_name: ${{ env.RELEASE_TAG }}
+           name: ${{ env.RELEASE_TAG }}-Erfan
+           tag_name: ${{ env.RELEASE_TAG }}-Erfan
            files: |
              ErfanGSIs/*.7z
              ErfanGSIs/*.txt
@@ -34,6 +34,6 @@ jobs:
        - name: Upload
          run: |
            cd ErfanGSIs
-           source build_scripts/upload.sh
+           source build_scripts/upload.sh "Erfan"
          env:
            RELEASE_TAG_NAME: ${{ env.RELEASE_TAG }}

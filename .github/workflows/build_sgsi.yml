@@ -98,6 +98,6 @@ jobs:
        - name: Upload
          run: |
            cd $GITHUB_WORKSPACE
-           source upload.sh
+           source upload.sh "xiaoxinSGSI"
          env:
            RELEASE_TAG_NAME: ${{ env.RELEASE_TAG }}
