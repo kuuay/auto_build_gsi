@@ -9,6 +9,8 @@ on:
 
 env:
   token: ${{ secrets.BOT_TOKEN }}
+  supportab: 'true'
+  supportaonly: 'false'
     
 jobs:
   build:
@@ -56,10 +58,12 @@ jobs:
            mkdir -p $GITHUB_WORKSPACE/output
             
        - name: Building AB DEVICES SGSI...
+         if: env.supportab == 'true'
          run: |
            sudo bash $GITHUB_WORKSPACE/SGSI-build-tool/make.sh --AB ${{ env.FIRMWARE_OS }} update.zip --fix-bug
 
        - name: Repack AB output file ...
+         if: env.supportab == 'true'
          run: |            
            cd $GITHUB_WORKSPACE/SGSI-build-tool/SGSI
            pwd
@@ -71,10 +75,12 @@ jobs:
            cd $GITHUB_WORKSPACE/SGSI-build-tool
 
        - name: Building Aonly DEVICES SGSI...
+         if: env.supportaonly == 'true'
          run: |
            sudo bash $GITHUB_WORKSPACE/SGSI-build-tool/make.sh --a-only ${{ env.FIRMWARE_OS }} update.zip --fix-bug     
 
        - name: Repack Aonly output file ...
+         if: env.supportaonly == 'true'
          run: |            
            cd $GITHUB_WORKSPACE/SGSI-build-tool/SGSI
            pwd
