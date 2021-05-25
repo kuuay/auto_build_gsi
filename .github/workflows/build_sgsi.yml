@@ -95,8 +95,8 @@ jobs:
          uses: softprops/action-gh-release@v1
          with:
            files: ${{ github.workspace }}/output/*.7z
-           name: ${{ env.RELEASE_TAG }}-xiaoxin
-           tag_name: ${{ env.RELEASE_TAG }}-xiaoxin
+           name: ${{ env.RELEASE_TAG }}-xiaoxinSGSI
+           tag_name: ${{ env.RELEASE_TAG }}-xiaoxinSGSI
            #body: Use actions auto bulid
          env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}           

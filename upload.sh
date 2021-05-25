@@ -1,5 +1,21 @@
 #! /bin/bash
 
+DISTRO=$(cat /etc/issue)
+
+if [ -n "$CI" ]
+then
+	if [ -n "$CIRCLECI" ]
+	then
+		export KBUILD_BUILD_VERSION=$CIRCLE_BUILD_NUM
+		export KBUILD_BUILD_HOST="CircleCI"
+	else
+		export KBUILD_BUILD_VERSION=$GITHUB_RUN_NUMBER
+		export KBUILD_BUILD_HOST="Github Actions"
+	fi
+fi
+
+. firmware_info
+
 tg_post_msg_html() {
 	BOT_MSG_URL="https://api.telegram.org/bot$token/sendMessage"
 	curl -s -X POST "$BOT_MSG_URL" -d chat_id="-517381703" \

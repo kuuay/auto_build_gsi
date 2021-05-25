@@ -33,7 +33,7 @@ jobs:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
        - name: Upload
          run: |
-           cd ErfanGSIs
-           source build_scripts/upload.sh "Erfan"
+           cd ErfanGSIs/build_script
+           source upload.sh "Erfan"
          env:
            RELEASE_TAG_NAME: ${{ env.RELEASE_TAG }}
