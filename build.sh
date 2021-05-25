@@ -116,9 +116,9 @@ output_upload() {
 	AonlyNAME="$(ls *-Aonly-*.img)"
 	AonlyNAME_FINAL="${AonlyNAME%.*}"
 	cd ..
-	echo "$ABNAME_FINAL.7z"
+	echo "$ABNAME_FINAL-Erfan.7z"
 	7za a -t7z -r $ABNAME_FINAL.7z output/*-AB-*.img
-	echo "$AonlyNAME_FINAL.7z"
+	echo "$AonlyNAME_FINAL-Erfan.7z"
 	7za a -t7z -r $AonlyNAME_FINAL.7z output/*-Aonly-*.img
 
         DATE_TAG=$(export TZ=UTC-8; date +"%Y%m%d")

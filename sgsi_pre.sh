@@ -1,0 +1,9 @@
+# This file is used to set environment variables
+. firmware_info
+DATE_TAG=$(export TZ=UTC-8; date +"%Y%m%d")
+echo "RELEASE_TAG=$FIRMWARE_OS-$FIRMWARE_DEVICE-$DATE_TAG" >> $GITHUB_ENV
+echo "DATE=$DATE_TAG" >> $GITHUB_ENV
+echo "FIRMWARE_OS=$FIRMWARE_OS" >> $GITHUB_ENV
+echo "FIRMWARE_DEVICE=$FIRMWARE_DEVICE" >> $GITHUB_ENV
+echo "FIRMWARE_MODEL=$FIRMWARE_MODEL" >> $GITHUB_ENV
+echo "FIRMWARE_LINK=$FIRMWARE_LINK" >> $GITHUB_ENV
