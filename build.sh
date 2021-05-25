@@ -99,11 +99,6 @@ prepare_env() {
 }
 
 build_gsi() {
-	if [ "$PTTG" = 1 ]
- 	then
-		tg_post_msg "<b>第$KBUILD_BUILD_VERSION次任务开始了哦</b>%0A<b>操作系统 : </b><code>$DISTRO</code>%0A<b>CI 服务商 : </b><code>$KBUILD_BUILD_HOST</code>%0A<b>日期 : </b><code>$(export TZ=UTC-8; date)</code>%0A%0A<b>固件信息:</b>%0A<b>机型 : </b><code>$FIRMWARE_MODEL [$FIRMWARE_DEVICE]</code>%0A<b>OS : </b><code>$FIRMWARE_OS</code>%0A<b>来源 : </b><code>$FIRMWARE_LINK</code>"
-	fi
-
 	msg "|| Started Build ||"
 	sudo bash url2GSI.sh $FIRMWARE_LINK $FIRMWARE_OS 2>&1 | tee build.log
 }
@@ -123,10 +118,6 @@ output_upload() {
 
         DATE_TAG=$(export TZ=UTC-8; date +"%Y%m%d")
         echo "RELEASE_TAG=$FIRMWARE_OS-$FIRMWARE_DEVICE-$DATE_TAG" >> $GITHUB_ENV
-}
-
-upload_log() {
-	tg_post_build "build.log" "好耶! 来康康log吧" "Debug Mode Logs"
 }
 
 prepare_env

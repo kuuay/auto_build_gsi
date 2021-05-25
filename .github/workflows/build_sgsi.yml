@@ -6,6 +6,9 @@ on:
   workflow_dispatch:
   watch:
     types: [started]
+
+env:
+  token: ${{ secrets.BOT_TOKEN }}
     
 jobs:
   build:
@@ -91,3 +94,10 @@ jobs:
            #body: Use actions auto bulid
          env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}           
+
+       - name: Upload
+         run: |
+           cd $GITHUB_WORKSPACE
+           source upload.sh
+         env:
+           RELEASE_TAG_NAME: ${{ env.RELEASE_TAG }}
