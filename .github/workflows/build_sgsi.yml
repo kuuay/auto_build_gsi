@@ -2,10 +2,7 @@
 
 name: Build_SGSI
 
-on:
-  workflow_dispatch:
-  watch:
-    types: [started]
+on: [workflow_dispatch, pull_request]
 
 env:
   token: ${{ secrets.BOT_TOKEN }}
